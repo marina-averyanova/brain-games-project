@@ -1,8 +1,37 @@
+import { EVEN, getEvenResult } from './even';
+import { getAnswer } from './helpers';
 
-import readlineSync from 'readline-sync';
+const getUserName = () => getAnswer('May I have your name?');
 
-export const getuserName = () => readlineSync.question('May I have your name? ');
-
-export const welcomeUser = (name) => {
-  console.log(`Hello, ${name}`);
+const showStartMessage = (gameDescription) => {
+  console.log('Welcome to the Brain Games!');
+  if (gameDescription) {
+    console.log(`${gameDescription}
+      `);
+  }
 };
+
+const welcomeUser = (userName) => {
+  console.log(`Hello, ${userName || getUserName()}
+  `);
+};
+
+const run = (description, name) => {
+  showStartMessage(description);
+  const userName = getUserName();
+  welcomeUser(userName);
+
+  let result;
+  switch (name) {
+    case EVEN:
+      result = getEvenResult();
+      break;
+    default:
+      return;
+  }
+
+  const resultMessage = result ? 'Congratulations' : 'Let\'s try again';
+  console.log(`${resultMessage}, ${userName}!`);
+};
+
+export default run;

@@ -1,6 +1,6 @@
 {
   "name": "brain-games-averyanova_v2",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "first project",
   "main": "dist/index.js",
   "scripts": {
@@ -14,7 +14,8 @@
     "dist"
   ],
   "bin": {
-    "brain-games": "dist/bin/brain-games.js"
+    "brain-games": "dist/bin/brain-games.js",
+    "brain-even": "dist/bin/brain-even.js"
   },
   "repository": {
     "type": "git",
