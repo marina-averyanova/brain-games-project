@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-import { EVEN, getDescription } from '../even';
-import run from '..';
+import startEvenGame from '../even';
 
-run(getDescription(), EVEN);
+startEvenGame();
