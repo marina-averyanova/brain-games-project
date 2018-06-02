@@ -1,7 +1,12 @@
-import * as math from 'mathjs';
+import { randomInt } from 'mathjs';
+import run from '../runner';
 
-export const description = 'Answer "yes" if number even otherwise answer "no".';
+const description = 'Answer "yes" if number even otherwise answer "no".';
 
-export const getQuestion = () => `${math.randomInt(1, 30)}`;
+const getQuestion = () => randomInt(1, 30);
 
-export const getAnswer = number => (+number % 2 === 0 ? 'yes' : 'no');
+const isEval = number => +number % 2 === 0;
+
+const getAnswer = number => (isEval(number) ? 'yes' : 'no');
+
+export default () => run(description, getQuestion, getAnswer);

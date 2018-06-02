@@ -1,11 +1,17 @@
-import { cons, car, cdr } from 'hexlet-pairs';
-import * as math from 'mathjs';
+import { randomInt, eval as evalExpression } from 'mathjs';
+import run from '../runner';
 
-export const description = 'What is the result of the expression?';
+const actions = '+-*';
 
-export const getQuestion = () => {
-  const expression = cons(cons(math.randomInt(1, 10), math.randomInt(1, 10)), '+-*'[math.randomInt(3)]);
-  return `${car(car(expression))} ${cdr(expression)} ${cdr(car(expression))}`;
+const description = 'What is the result of the expression?';
+
+const getQuestion = () => {
+  const x = randomInt(1, 10);
+  const y = randomInt(1, 10);
+  const action = actions[randomInt(3)];
+  return `${x} ${action} ${y}`;
 };
 
-export const getAnswer = expression => `${math.eval(expression)}`;
+const getAnswer = stringExpression => `${evalExpression(stringExpression)}`;
+
+export default () => run(description, getQuestion, getAnswer);
