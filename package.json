@@ -1,6 +1,6 @@
 {
   "name": "brain-games-averyanova_v2",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "first project",
   "main": "dist/index.js",
   "scripts": {
@@ -14,7 +14,8 @@
     "dist"
   ],
   "bin": {
-    "brain-even": "dist/bin/brain-even.js"
+    "brain-even": "dist/bin/brain-even.js",
+    "brain-calc": "dist/bin/brain-calc.js"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,8 @@
     "eslint-plugin-import": "^2.12.0"
   },
   "dependencies": {
+    "hexlet-pairs": "^1.0.7",
+    "mathjs": "^4.4.2",
     "readline-sync": "^1.4.9"
   }
 }
