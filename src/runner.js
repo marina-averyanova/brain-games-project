@@ -1,8 +1,10 @@
 import readlineSync from 'readline-sync';
+import { car, cdr } from 'hexlet-pairs';
 
+const startAttempt = 1;
 const attemptCount = 3;
 
-export const runGame = (description, attemptRunner) => {
+export default (description, paramsGenerator) => {
   console.log('Welcome to the Brain Games!');
   console.log(description);
   console.log('');
@@ -11,25 +13,26 @@ export const runGame = (description, attemptRunner) => {
   console.log(`Hello, ${userName}`);
   console.log('');
 
-  let result = true;
-  let attempt = 1;
-  while (attempt <= attemptCount && result === true) {
-    result = attemptRunner();
-    attempt += 1;
-  }
+  const run = (attempt) => {
+    if (attempt > attemptCount) {
+      return true;
+    }
 
-  const resultMessage = result ? 'Congratulations' : 'Let\'s try again';
+    const attemptParams = paramsGenerator();
+    const question = car(attemptParams);
+    const answer = cdr(attemptParams);
+
+    console.log(`Question: ${(question)}`);
+    const userAnswer = readlineSync.question('Your answer: ');
+
+    if (answer === userAnswer) {
+      console.log('Correct!');
+      return run(attempt + 1);
+    }
+    console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${answer}".`);
+    return false;
+  };
+
+  const resultMessage = run(startAttempt) ? 'Congratulations' : 'Let\'s try again';
   console.log(`${resultMessage}, ${userName}!`);
-};
-
-export const runAttempt = (question, answer) => {
-  console.log(`Question: ${(question)}`);
-  const userAnswer = readlineSync.question('Your answer: ');
-
-  if (answer === userAnswer) {
-    console.log('Correct!');
-    return true;
-  }
-  console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${answer}".`);
-  return false;
 };

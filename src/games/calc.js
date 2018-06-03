@@ -1,5 +1,6 @@
 import { randomInt } from 'mathjs';
-import { runGame, runAttempt } from '../runner';
+import { cons } from 'hexlet-pairs';
+import run from '../runner';
 
 const actions = '+-*';
 const plus = '+';
@@ -21,7 +22,7 @@ const calculate = (x, y, action) => {
   return answer;
 };
 
-const runCalcAttempt = () => {
+const generateParams = () => {
   const x = randomInt(1, 10);
   const y = randomInt(1, 10);
   const action = actions[randomInt(3)];
@@ -29,9 +30,9 @@ const runCalcAttempt = () => {
   const question = `${x} ${action} ${y}`;
   const answer = calculate(x, y, action);
 
-  return runAttempt(question, `${answer}`);
+  return cons(question, `${answer}`);
 };
 
 export default () => {
-  runGame(description, runCalcAttempt);
+  run(description, generateParams);
 };
