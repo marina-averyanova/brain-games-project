@@ -6,6 +6,8 @@ startCalc:
 	npm run babel-node -- src/bin/brain-calc.js
 startGcd:
 	npm run babel-node -- src/bin/brain-gcd.js
+startBalance:
+	npm run babel-node -- src/bin/brain-balance.js
 publish:
 	npm publish
 lint:
