@@ -1,17 +1,37 @@
-import { randomInt, eval as evalExpression } from 'mathjs';
-import run from '../runner';
+import { randomInt } from 'mathjs';
+import { runGame, runAttempt } from '../runner';
 
 const actions = '+-*';
+const plus = '+';
+const minus = '-';
+const multiplication = '*';
 
 const description = 'What is the result of the expression?';
 
-const getQuestion = () => {
+const calculate = (x, y, action) => {
+  let answer;
+
+  if (action === plus) {
+    answer = x + y;
+  } else if (action === minus) {
+    answer = x - y;
+  } else if (action === multiplication) {
+    answer = x * y;
+  }
+  return answer;
+};
+
+const runCalcAttempt = () => {
   const x = randomInt(1, 10);
   const y = randomInt(1, 10);
   const action = actions[randomInt(3)];
-  return `${x} ${action} ${y}`;
+
+  const question = `${x} ${action} ${y}`;
+  const answer = calculate(x, y, action);
+
+  return runAttempt(question, `${answer}`);
 };
 
-const getAnswer = stringExpression => `${evalExpression(stringExpression)}`;
-
-export default () => run(description, getQuestion, getAnswer);
+export default () => {
+  runGame(description, runCalcAttempt);
+};

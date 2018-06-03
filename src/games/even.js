@@ -1,12 +1,17 @@
 import { randomInt } from 'mathjs';
-import run from '../runner';
+import { runGame, runAttempt } from '../runner';
 
 const description = 'Answer "yes" if number even otherwise answer "no".';
 
-const getQuestion = () => randomInt(1, 30);
+const isEven = number => number % 2 === 0;
 
-const isEval = number => +number % 2 === 0;
+const runEvenAttempt = () => {
+  const question = randomInt(1, 30);
+  const answer = isEven(question) ? 'yes' : 'no';
 
-const getAnswer = number => (isEval(number) ? 'yes' : 'no');
+  return runAttempt(question, answer);
+};
 
-export default () => run(description, getQuestion, getAnswer);
+export default () => {
+  runGame(description, runEvenAttempt);
+};
