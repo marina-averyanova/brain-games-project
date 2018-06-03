@@ -3,7 +3,7 @@ import { cons } from 'hexlet-pairs';
 import { map } from 'lodash';
 import run from '../runner';
 
-const description = 'What is the result of the expression?';
+const description = 'Balance the given number.';
 
 const balanceNumber = (number) => {
   const balance = (digits) => {

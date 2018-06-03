@@ -8,6 +8,8 @@ startGcd:
 	npm run babel-node -- src/bin/brain-gcd.js
 startBalance:
 	npm run babel-node -- src/bin/brain-balance.js
+startProgression:
+	npm run babel-node -- src/bin/brain-progression.js
 publish:
 	npm publish
 lint:

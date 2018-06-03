@@ -2,7 +2,7 @@ import { randomInt } from 'mathjs';
 import { cons } from 'hexlet-pairs';
 import run from '../runner';
 
-const description = 'What is the result of the expression?';
+const description = 'Find the greatest common divisor of given numbers.';
 
 const findGcd = (x, y) => {
   if (!y) {

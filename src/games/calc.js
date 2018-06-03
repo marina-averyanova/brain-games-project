@@ -2,12 +2,12 @@ import { randomInt } from 'mathjs';
 import { cons } from 'hexlet-pairs';
 import run from '../runner';
 
+const description = 'What is the result of the expression?';
+
 const actions = '+-*';
 const plus = '+';
 const minus = '-';
 const multiplication = '*';
-
-const description = 'What is the result of the expression?';
 
 const calculate = (x, y, action) => {
   let answer;
