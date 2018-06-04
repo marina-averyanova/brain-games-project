@@ -12,13 +12,19 @@ const multiplication = '*';
 const calculate = (x, y, action) => {
   let answer;
 
-  if (action === plus) {
-    answer = x + y;
-  } else if (action === minus) {
-    answer = x - y;
-  } else if (action === multiplication) {
-    answer = x * y;
+  switch (action) {
+    case plus:
+      answer = x + y;
+      break;
+    case minus:
+      answer = x - y;
+      break;
+    case multiplication:
+      answer = x * y;
+      break;
+    default:
   }
+
   return answer;
 };
 

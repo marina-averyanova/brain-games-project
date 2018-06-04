@@ -25,6 +25,7 @@ export default (description, paramsGenerator) => {
     console.log(`Question: ${(question)}`);
     const userAnswer = readlineSync.question('Your answer: ');
 
+
     if (answer === userAnswer) {
       console.log('Correct!');
       return run(attempt + 1);
@@ -33,6 +34,10 @@ export default (description, paramsGenerator) => {
     return false;
   };
 
-  const resultMessage = run(startAttempt) ? 'Congratulations' : 'Let\'s try again';
-  console.log(`${resultMessage}, ${userName}!`);
+  const isWin = run(startAttempt);
+  if (isWin) {
+    console.log(`Congratulations, ${userName}!`);
+  } else {
+    console.log(`Let's try again, ${userName}!`);
+  }
 };

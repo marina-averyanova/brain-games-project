@@ -1,23 +1,25 @@
 import { randomInt } from 'mathjs';
 import { cons } from 'hexlet-pairs';
-import { map } from 'lodash';
 import run from '../runner';
 
 const description = 'Balance the given number.';
 
 const balanceNumber = (number) => {
   const balance = (digits) => {
-    const sortedDigits = digits.sort();
+    const sortedDigits = ([].concat(digits)).sort();
     const least = sortedDigits[0];
     const greatest = sortedDigits[digits.length - 1];
 
     if (greatest - least <= 1) {
       return sortedDigits.join('');
     }
-    return balance([least + 1].concat(digits.slice(1, digits.length - 1)).concat([greatest - 1]));
+    const first = [least + 1];
+    const last = [greatest - 1];
+
+    return balance(first.concat(sortedDigits.slice(1, sortedDigits.length - 1)).concat(last));
   };
 
-  return balance(map(`${number}`, n => +n));
+  return balance(`${number}`.split('').map(n => +n));
 };
 
 const generateParams = () => {
